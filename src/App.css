@@ -65,6 +65,24 @@
   box-shadow: 0 10px 25px rgba(192, 132, 245, 0.4) !important;
 }
 
+/* AM Logo Styles */
+.logo-text {
+  color: #c084f5;
+  font-size: 1.8em;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-shadow: 0 2px 4px rgba(192, 132, 245, 0.3);
+}
+
+.logo-text:hover {
+  color: #a855f7;
+  transform: scale(1.1);
+  text-shadow: 0 4px 8px rgba(192, 132, 245, 0.5);
+}
+
 /* Coming Soon Projects Styles */
 .coming-soon-container {
   padding: 40px;
@@ -170,5 +188,9 @@
 
   .feature-item {
     margin-bottom: 15px;
+  }
+
+  .logo-text {
+    font-size: 1.5em;
   }
 }
