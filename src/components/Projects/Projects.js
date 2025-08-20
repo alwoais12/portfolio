@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCards from "./ProjectCards";
 import Particle from "../Particle";
-import projectLogo from "../../Assets/Options.png";
+import projectLogo from "../../Assets/Logo-future.png";
 
 function Projects() {
   return (
@@ -22,13 +22,13 @@ function Projects() {
             <div className="coming-soon-container">
               <img 
                 src={projectLogo} 
-                alt="Project Logo" 
+                alt="Future Step Logo" 
                 className="project-logo"
                 style={{
-                  width: "120px",
-                  height: "120px",
+                  width: "180px",
+                  height: "auto",
                   marginBottom: "20px",
-                  filter: "brightness(0.8)"
+                  filter: "brightness(0.9)"
                 }}
               />
               <h2 className="coming-soon-title" style={{ color: "#c084f5", marginBottom: "15px" }}>
@@ -90,7 +90,7 @@ function Projects() {
                       margin: "10px 0",
                       background: "rgba(192, 132, 245, 0.02)"
                     }}>
-                      <h5 style={{ color: "#c084f5" }}>Project 1</h5>
+                      <h5 style={{ color: "#c084f5" }}>AI Driven Service Agent</h5>
                       <p style={{ color: "rgb(155 126 172)", fontSize: "0.9em" }}>Coming Soon</p>
                     </div>
                   </Col>
