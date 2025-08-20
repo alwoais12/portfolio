@@ -23,7 +23,7 @@ function Footer() {
           <ul className="footer-icons">
             <li className="social-icons">
               <a
-                href="https://github.com/ahmed"
+                href="https://github.com/alwoais12"
                 style={{ color: "white" }}
                 target="_blank" 
                 rel="noopener noreferrer"
@@ -33,10 +33,8 @@ function Footer() {
             </li>
             <li className="social-icons">
               <a
-                href="https://twitter.com/ahmed"
+                href="#"
                 style={{ color: "white" }}
-                target="_blank" 
-                rel="noopener noreferrer"
               >
                 <AiOutlineTwitter />
               </a>
@@ -53,10 +51,8 @@ function Footer() {
             </li>
             <li className="social-icons">
               <a
-                href="https://www.instagram.com/ahmed"
+                href="#"
                 style={{ color: "white" }}
-                target="_blank" 
-                rel="noopener noreferrer"
               >
                 <AiFillInstagram />
               </a>
