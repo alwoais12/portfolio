@@ -5,7 +5,7 @@ import { CgWebsite } from "react-icons/cg";
 import { CgPhone } from "react-icons/cg";
 import { CgMail } from "react-icons/cg";
 import { ImPointRight } from "react-icons/im";
-import ahmedImage from "../../Assets/ahmed.jpg";
+import ahmedImage from "../../Assets/ahmed.png";
 
 function AboutCard() {
   return (

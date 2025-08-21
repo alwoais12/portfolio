@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCards from "./ProjectCards";
 import Particle from "../Particle";
-import projectLogo from "../../Assets/Logo-future.png";
+import projectLogo from "../../Assets/Projects/Logo-future.png";
 
 function Projects() {
   return (
