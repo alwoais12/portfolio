@@ -93,6 +93,106 @@
   text-shadow: 0 4px 8px rgba(192, 132, 245, 0.5);
 }
 
+/* Future Step Project Styles */
+.future-step-project-container {
+  padding: 50px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, rgba(192, 132, 245, 0.05), rgba(168, 85, 247, 0.03));
+  border: 2px solid rgba(192, 132, 245, 0.15);
+  transition: all 0.3s ease;
+  margin-bottom: 40px;
+}
+
+.future-step-project-container:hover {
+  background: linear-gradient(135deg, rgba(192, 132, 245, 0.08), rgba(168, 85, 247, 0.05));
+  border-color: rgba(192, 132, 245, 0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(192, 132, 245, 0.1);
+}
+
+.project-header {
+  margin-bottom: 40px;
+}
+
+.project-title {
+  text-shadow: 0 4px 8px rgba(192, 132, 245, 0.3);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 4px 8px rgba(192, 132, 245, 0.3);
+  }
+  to {
+    text-shadow: 0 4px 15px rgba(192, 132, 245, 0.5), 0 0 20px rgba(192, 132, 245, 0.3);
+  }
+}
+
+.project-subtitle {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.project-description {
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.feature-card {
+  padding: 25px 20px;
+  border-radius: 20px;
+  background: rgba(192, 132, 245, 0.03);
+  border: 1px solid rgba(192, 132, 245, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  text-align: center;
+}
+
+.feature-card:hover {
+  background: rgba(192, 132, 245, 0.08);
+  border-color: rgba(192, 132, 245, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(192, 132, 245, 0.15);
+}
+
+.feature-icon {
+  font-size: 3em;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 2px 4px rgba(192, 132, 245, 0.3));
+}
+
+.tech-card {
+  padding: 20px 15px;
+  border-radius: 15px;
+  background: rgba(192, 132, 245, 0.02);
+  border: 1px solid rgba(192, 132, 245, 0.08);
+  transition: all 0.3s ease;
+  height: 100%;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.tech-card:hover {
+  background: rgba(192, 132, 245, 0.06);
+  border-color: rgba(192, 132, 245, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(192, 132, 245, 0.12);
+}
+
+.tech-icon {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 2px 4px rgba(192, 132, 245, 0.3));
+}
+
+.project-status {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.project-status:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(192, 132, 245, 0.4);
+}
+
 /* Coming Soon Projects Styles */
 .coming-soon-container {
   padding: 40px;
@@ -202,5 +302,46 @@
 
   .logo-text {
     font-size: 1.5em;
+  }
+
+  /* Future Step Project Mobile Styles */
+  .future-step-project-container {
+    padding: 30px 20px;
+    margin-bottom: 30px;
+  }
+
+  .project-title {
+    font-size: 2.2em !important;
+  }
+
+  .project-subtitle {
+    font-size: 1.2em !important;
+  }
+
+  .project-description {
+    font-size: 1.1em !important;
+  }
+
+  .feature-card {
+    padding: 20px 15px;
+    margin-bottom: 15px;
+  }
+
+  .feature-icon {
+    font-size: 2.5em;
+  }
+
+  .tech-card {
+    padding: 15px 10px;
+    margin-bottom: 10px;
+  }
+
+  .tech-icon {
+    font-size: 2em;
+  }
+
+  .project-status {
+    padding: 12px 25px !important;
+    font-size: 1em !important;
   }
 }
