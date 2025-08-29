@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCards from "./ProjectCards";
 import Particle from "../Particle";
 import projectLogo from "../../Assets/Projects/Logo-future.png";
 
 function Projects() {
+  const [showDetails, setShowDetails] = useState(false);
   return (
     <Container fluid className="project-section">
       <Particle />
@@ -32,119 +33,148 @@ function Projects() {
                     filter: "brightness(1.2) contrast(1.1)"
                   }}
                 />
-                <h2 className="project-title" style={{ color: "#c084f5", marginBottom: "10px", fontSize: "2.8em" }}>
-                  🚀 Future Step
-                </h2>
-                <h3 className="project-subtitle" style={{ color: "rgb(155 126 172)", marginBottom: "25px", fontSize: "1.4em", fontWeight: "400" }}>
-                  University Internship Management System
-                </h3>
-                <p className="project-description" style={{ color: "rgb(155 126 172)", fontSize: "1.2em", maxWidth: "800px", margin: "0 auto 30px", lineHeight: "1.6" }}>
-                  A platform that connects students with internship opportunities and enables achievement tracking, 
-                  designed for universities and organizations across the UAE.
-                </p>
+                {!showDetails && (
+                  <div style={{ marginBottom: "20px" }}>
+                    <div className="project-status" style={{ 
+                      background: "linear-gradient(135deg, #c084f5, #a855f7)", 
+                      color: "white", 
+                      padding: "15px 30px", 
+                      borderRadius: "25px", 
+                      display: "inline-block",
+                      fontSize: "1.1em",
+                      fontWeight: "600",
+                      boxShadow: "0 8px 25px rgba(192, 132, 245, 0.3)"
+                    }}>
+                      🚧 Coming Soon - Development in Progress
+                    </div>
+                  </div>
+                )}
+
+                <button
+                  type="button"
+                  onClick={() => setShowDetails(!showDetails)}
+                  style={{
+                    background: "transparent",
+                    border: "2px solid #c084f5",
+                    color: "#c084f5",
+                    padding: "10px 20px",
+                    borderRadius: "8px",
+                    cursor: "pointer",
+                    fontWeight: 600
+                  }}
+                >
+                  {showDetails ? "Hide information" : "View information"}
+                </button>
+
+                {showDetails && (
+                  <>
+                    <h2 className="project-title" style={{ color: "#c084f5", marginBottom: "10px", fontSize: "2.8em" }}>
+                      🚀 Future Step
+                    </h2>
+                    <h3 className="project-subtitle" style={{ color: "rgb(155 126 172)", marginBottom: "25px", fontSize: "1.4em", fontWeight: "400" }}>
+                      University Internship Management System
+                    </h3>
+                    <p className="project-description" style={{ color: "rgb(155 126 172)", fontSize: "1.2em", maxWidth: "800px", margin: "0 auto 30px", lineHeight: "1.6" }}>
+                      A platform that connects students with internship opportunities and enables achievement tracking, 
+                      designed for universities and organizations across the UAE.
+                    </p>
+                  </>
+                )}
               </div>
 
               {/* Features Section */}
-              <div className="project-features" style={{ marginBottom: "40px" }}>
-                <h4 style={{ color: "#c084f5", marginBottom: "25px", fontSize: "1.6em" }}>
-                  ✨ Key Features
-                </h4>
-                <Row>
-                  <Col md={3}>
-                    <div className="feature-card">
-                      <div className="feature-icon">🔐</div>
-                      <h5 style={{ color: "#c084f5", marginBottom: "10px" }}>Multi-Role Auth</h5>
-                      <p style={{ color: "rgb(155 126 172)", fontSize: "0.9em" }}>Students, entities & universities</p>
-                    </div>
-                  </Col>
-                  <Col md={3}>
-                    <div className="feature-card">
-                      <div className="feature-icon">💼</div>
-                      <h5 style={{ color: "#c084f5", marginBottom: "10px" }}>Internship Management</h5>
-                      <p style={{ color: "rgb(155 126 172)", fontSize: "0.9em" }}>Posting & application handling</p>
-                    </div>
-                  </Col>
-                  <Col md={3}>
-                    <div className="feature-card">
-                      <div className="feature-icon">🏆</div>
-                      <h5 style={{ color: "#c084f5", marginBottom: "10px" }}>Achievement Tracking</h5>
-                      <p style={{ color: "rgb(155 126 172)", fontSize: "0.9em" }}>Student progress monitoring</p>
-                    </div>
-                  </Col>
-                  <Col md={3}>
-                    <div className="feature-card">
-                      <div className="feature-icon">📊</div>
-                      <h5 style={{ color: "#c084f5", marginBottom: "10px" }}>Dashboard Interface</h5>
-                      <p style={{ color: "rgb(155 126 172)", fontSize: "0.9em" }}>Responsive & intuitive</p>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
+              {showDetails && (
+                <div className="project-features" style={{ marginBottom: "40px" }}>
+                  <h4 style={{ color: "#c084f5", marginBottom: "25px", fontSize: "1.6em" }}>
+                    ✨ Key Features
+                  </h4>
+                  <Row>
+                    <Col md={3}>
+                      <div className="feature-card">
+                        <div className="feature-icon">🔐</div>
+                        <h5 style={{ color: "#c084f5", marginBottom: "10px" }}>Multi-Role Auth</h5>
+                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.9em" }}>Students, entities & universities</p>
+                      </div>
+                    </Col>
+                    <Col md={3}>
+                      <div className="feature-card">
+                        <div className="feature-icon">💼</div>
+                        <h5 style={{ color: "#c084f5", marginBottom: "10px" }}>Internship Management</h5>
+                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.9em" }}>Posting & application handling</p>
+                      </div>
+                    </Col>
+                    <Col md={3}>
+                      <div className="feature-card">
+                        <div className="feature-icon">🏆</div>
+                        <h5 style={{ color: "#c084f5", marginBottom: "10px" }}>Achievement Tracking</h5>
+                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.9em" }}>Student progress monitoring</p>
+                      </div>
+                    </Col>
+                    <Col md={3}>
+                      <div className="feature-card">
+                        <div className="feature-icon">📊</div>
+                        <h5 style={{ color: "#c084f5", marginBottom: "10px" }}>Dashboard Interface</h5>
+                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.9em" }}>Responsive & intuitive</p>
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+              )}
 
               {/* Technologies Section */}
-              <div className="project-technologies" style={{ marginBottom: "40px" }}>
-                <h4 style={{ color: "#c084f5", marginBottom: "25px", fontSize: "1.6em" }}>
-                  🛠️ Technologies
-                </h4>
-                <Row>
-                  <Col md={2}>
-                    <div className="tech-card">
-                      <div className="tech-icon">⚛️</div>
-                      <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>Next.js 15</h6>
-                      <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>App Router</p>
-                    </div>
-                  </Col>
-                  <Col md={2}>
-                    <div className="tech-card">
-                      <div className="tech-icon">📘</div>
-                      <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>TypeScript</h6>
-                      <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>Type Safety</p>
-                    </div>
-                  </Col>
-                  <Col md={2}>
-                    <div className="tech-card">
-                      <div className="tech-icon">🗄️</div>
-                      <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>SQL Server</h6>
-                      <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>Database</p>
-                    </div>
-                  </Col>
-                  <Col md={2}>
-                    <div className="tech-card">
-                      <div className="tech-icon">🔌</div>
-                      <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>Prisma</h6>
-                      <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>ORM</p>
-                    </div>
-                  </Col>
-                  <Col md={2}>
-                    <div className="tech-card">
-                      <div className="tech-icon">🔐</div>
-                      <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>NextAuth.js</h6>
-                      <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>Authentication</p>
-                    </div>
-                  </Col>
-                  <Col md={2}>
-                    <div className="tech-card">
-                      <div className="tech-icon">🎨</div>
-                      <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>Tailwind CSS</h6>
-                      <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>Styling</p>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
+              {showDetails && (
+                <div className="project-technologies" style={{ marginBottom: "40px" }}>
+                  <h4 style={{ color: "#c084f5", marginBottom: "25px", fontSize: "1.6em" }}>
+                    🛠️ Technologies
+                  </h4>
+                  <Row>
+                    <Col md={2}>
+                      <div className="tech-card">
+                        <div className="tech-icon">⚛️</div>
+                        <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>Next.js 15</h6>
+                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>App Router</p>
+                      </div>
+                    </Col>
+                    <Col md={2}>
+                      <div className="tech-card">
+                        <div className="tech-icon">📘</div>
+                        <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>TypeScript</h6>
+                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>Type Safety</p>
+                      </div>
+                    </Col>
+                    <Col md={2}>
+                      <div className="tech-card">
+                        <div className="tech-icon">🗄️</div>
+                        <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>SQL Server</h6>
+                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>Database</p>
+                      </div>
+                    </Col>
+                    <Col md={2}>
+                      <div className="tech-card">
+                        <div className="tech-icon">🔌</div>
+                        <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>Prisma</h6>
+                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>ORM</p>
+                      </div>
+                    </Col>
+                    <Col md={2}>
+                      <div className="tech-card">
+                        <div className="tech-icon">🔐</div>
+                        <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>NextAuth.js</h6>
+                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>Authentication</p>
+                      </div>
+                    </Col>
+                    <Col md={2}>
+                      <div className="tech-card">
+                        <div className="tech-icon">🎨</div>
+                        <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>Tailwind CSS</h6>
+                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>Styling</p>
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
+              )}
 
-              {/* Status Badge */}
-              <div className="project-status" style={{ 
-                background: "linear-gradient(135deg, #c084f5, #a855f7)", 
-                color: "white", 
-                padding: "15px 30px", 
-                borderRadius: "25px", 
-                display: "inline-block",
-                fontSize: "1.1em",
-                fontWeight: "600",
-                boxShadow: "0 8px 25px rgba(192, 132, 245, 0.3)"
-              }}>
-                🚧 Coming Soon - Development in Progress
-              </div>
+              {/* Status Badge moved above; only visible when details hidden */}
             </div>
           </Col>
         </Row>
