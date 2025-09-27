@@ -30,13 +30,10 @@ function ResumeNew() {
                 }}
               />
             </div>
-            <h1 className="resume-title">
-              <strong className="purple">Resume</strong>
-            </h1>
-            <p style={{ color: "rgb(155 126 172)" }}>
-              <strong>Ahmed Alowais</strong> - Software Developer
-            </p>
-            <div style={{ marginTop: "30px" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "15px", marginBottom: "10px" }}>
+              <h1 className="resume-title" style={{ margin: 0 }}>
+                <strong className="purple">Resume</strong>
+              </h1>
               <a href={pdf} download="Ahmed_Alowais_CV.pdf" className="Btn">
                 <svg className="svgIcon" viewBox="0 0 384 512" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM216 232V334.1l31-31c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-72 72c-9.4 9.4-24.6 9.4-33.9 0l-72-72c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l31 31V232c0-13.3 10.7-24 24-24s24 10.7 24 24z"></path>
@@ -45,6 +42,9 @@ function ResumeNew() {
                 <span className="tooltip">Download CV</span>
               </a>
             </div>
+            <p style={{ color: "rgb(155 126 172)" }}>
+              <strong>Ahmed Alowais</strong> - Software Developer
+            </p>
           </Col>
         </Row>
       </Container>
