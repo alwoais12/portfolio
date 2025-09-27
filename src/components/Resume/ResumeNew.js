@@ -37,63 +37,12 @@ function ResumeNew() {
               <strong>Ahmed Alowais</strong> - Software Developer
             </p>
             <div style={{ marginTop: "30px" }}>
-              <a href={pdf} download="Ahmed_Alowais_CV.pdf" className="download-button">
-                <div className="docs">
-                  <svg
-                    className="css-i6dzq1"
-                    strokeLinejoin="round"
-                    strokeLinecap="round"
-                    fill="none"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    height="20"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14,2 14,8 20,8"></polyline>
-                    <line y1="13" x2="8" y2="13"></line>
-                    <line y1="17" x2="8" y2="17"></line>
-                    <polyline points="10,9 9,9 8,9"></polyline>
-                  </svg>
-                  <span>Download Resume</span>
-                  <svg
-                    className="css-i6dzq1"
-                    strokeLinejoin="round"
-                    strokeLinecap="round"
-                    fill="none"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    height="20"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <line y1="12" x2="12" y2="12"></line>
-                    <line y1="12" x2="12" y2="12"></line>
-                    <polyline points="8,16 12,20 16,16"></polyline>
-                    <line y1="12" x2="12" y2="12"></line>
-                  </svg>
-                </div>
-                <div className="download">
-                  <svg
-                    className="css-i6dzq1"
-                    strokeLinejoin="round"
-                    strokeLinecap="round"
-                    fill="none"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    height="20"
-                    width="20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7,10 12,15 17,10"></polyline>
-                    <line y1="15" x2="12" y2="15"></line>
-                  </svg>
-                </div>
+              <a href={pdf} download="Ahmed_Alowais_CV.pdf" className="Btn">
+                <svg className="svgIcon" viewBox="0 0 384 512" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM216 232V334.1l31-31c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-72 72c-9.4 9.4-24.6 9.4-33.9 0l-72-72c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l31 31V232c0-13.3 10.7-24 24-24s24 10.7 24 24z"></path>
+                </svg>
+                <div className="icon2"></div>
+                <span className="tooltip">Download CV</span>
               </a>
             </div>
           </Col>
