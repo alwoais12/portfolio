@@ -5,9 +5,7 @@ import Container from "react-bootstrap/Container";
 
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import { CgGitFork } from "react-icons/cg";
 import {
-  AiFillStar,
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
@@ -99,17 +97,6 @@ function NavBar() {
 
 
 
-            <Nav.Item className="fork-btn">
-              <Button
-                href="https://github.com/alwoais12/Portfolio"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="fork-btn-inner glass cursor-hover hover-zone pulse-glow"
-              >
-                <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
-                <AiFillStar style={{ fontSize: "1.1em" }} />
-              </Button>
-            </Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Container>
