@@ -1,16 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Particle from "../Particle";
 import pdf from "../../Assets/AhmedCV.pdf";
 import profileImage from "../../Assets/أحمد العويس.jpg";
 import { AiOutlineDownload } from "react-icons/ai";
-import { Document, Page, pdfjs } from "react-pdf";
-import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 function ResumeNew() {
-  const [width] = useState(1200);
 
   return (
     <div>
@@ -43,24 +39,42 @@ function ResumeNew() {
           </Col>
         </Row>
         <Row className="resume">
-          <Col md={12} className="resume-left">
-            <h3 className="resume-title">Education</h3>
-            <Document file={pdf} className="d-flex justify-content-center">
-              <Page pageNumber={1} scale={width > 786 ? 1.7 : 0.6} />
-            </Document>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={12} className="resume-left">
-            <Button
-              variant="primary"
-              href={pdf}
-              target="_blank"
-              style={{ maxWidth: "250px" }}
-            >
-              <AiOutlineDownload />
-              &nbsp;Download CV
-            </Button>
+          <Col md={12} className="resume-left text-center">
+            <div style={{ marginBottom: "40px" }}>
+              <h3 className="resume-title" style={{ marginBottom: "20px" }}>
+                Download My Resume
+              </h3>
+              <p style={{ color: "rgb(155 126 172)", fontSize: "18px", marginBottom: "30px" }}>
+                Click the button below to download my complete CV in PDF format
+              </p>
+              <Button
+                variant="primary"
+                href={pdf}
+                download="Ahmed_Alowais_CV.pdf"
+                style={{ 
+                  maxWidth: "300px",
+                  padding: "15px 30px",
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                  borderRadius: "25px",
+                  background: "linear-gradient(45deg, #c084f5, #8b5cf6)",
+                  border: "none",
+                  boxShadow: "0 4px 15px rgba(192, 132, 245, 0.3)",
+                  transition: "all 0.3s ease"
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.transform = "translateY(-2px)";
+                  e.target.style.boxShadow = "0 6px 20px rgba(192, 132, 245, 0.4)";
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.transform = "translateY(0)";
+                  e.target.style.boxShadow = "0 4px 15px rgba(192, 132, 245, 0.3)";
+                }}
+              >
+                <AiOutlineDownload style={{ marginRight: "10px" }} />
+                Download CV
+              </Button>
+            </div>
           </Col>
         </Row>
       </Container>
