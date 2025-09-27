@@ -12,10 +12,204 @@ html {
   );
 
   --imp-text-color: #c770f0;
+  
+  /* Modern UI/UX Variables */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --neon-glow: 0 0 20px rgba(199, 112, 240, 0.5);
+  --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --animated-gradient: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+}
+
+/* Glassmorphism Base Classes */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 20px;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(199, 112, 240, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), var(--neon-glow);
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* Animated Gradient Backgrounds */
+.animated-gradient {
+  background: var(--animated-gradient);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 3D Transform Effects */
+.transform-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card-3d {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.card-3d:hover {
+  transform: rotateY(15deg) rotateX(10deg) translateZ(20px);
+}
+
+/* Floating Animation */
+.floating {
+  animation: floating 6s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Pulse Glow Effect */
+.pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from {
+    box-shadow: 0 0 20px rgba(199, 112, 240, 0.3);
+  }
+  to {
+    box-shadow: 0 0 40px rgba(199, 112, 240, 0.6), 0 0 60px rgba(199, 112, 240, 0.3);
+  }
+}
+
+/* Morphing Shapes */
+.morphing-shape {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: morph 8s ease-in-out infinite;
+}
+
+@keyframes morph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50% { border-radius: 70% 30% 40% 60% / 40% 70% 60% 30%; }
+  75% { border-radius: 40% 70% 60% 30% / 70% 40% 50% 60%; }
+}
+
+/* Neon Text Effect */
+.neon-text {
+  color: #c770f0;
+  text-shadow: 
+    0 0 5px #c770f0,
+    0 0 10px #c770f0,
+    0 0 15px #c770f0,
+    0 0 20px #c770f0;
+  animation: neonFlicker 2s infinite alternate;
+}
+
+@keyframes neonFlicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+
+
+@keyframes particleFloat {
+  0% { transform: translateY(0px) translateX(0px); }
+  33% { transform: translateY(-100px) translateX(100px); }
+  66% { transform: translateY(-200px) translateX(-100px); }
+  100% { transform: translateY(-300px) translateX(0px); }
+}
+
+/* Interactive Hover Zones */
+.hover-zone {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-zone::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(199, 112, 240, 0.2) 0%, transparent 70%);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.hover-zone:hover::after {
+  width: 300px;
+  height: 300px;
 }
 
 .purple {
   color: var(--imp-text-color) !important;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for fixed navbar */
+}
+
+/* Enhanced transitions for all elements */
+* {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Clean Gradient Text Effect */
+.gradient-text {
+  /* Solid purple text that's always visible */
+  color: #c770f0;
+  font-weight: 700;
+  display: inline-block;
+  position: relative;
+  text-shadow: 0 0 20px rgba(199, 112, 240, 0.8);
+  transition: all 0.3s ease;
+}
+
+.gradient-text:hover {
+  color: #a855f7;
+  text-shadow: 0 0 30px rgba(168, 85, 247, 1);
+}
+
+/* Removed gradient animation - using simple color transitions instead */
+
+/* Improved heading styles */
+.heading-name {
+  font-size: 2.8em;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.main-name {
+  display: inline-block;
+  margin-left: 0.3em;
+  position: relative;
 }
 
 button:focus {
@@ -76,10 +270,11 @@ button:focus {
 /* Navbar Section  */
 /* --------- */
 .sticky {
-  background-color: #1b1a2ea9 !important;
-  transition: all 0.3s ease-out 0s !important;
-  box-shadow: 0px 10px 10px 0px rgba(9, 5, 29, 0.171) !important;
-  backdrop-filter: blur(15px) !important;
+  background: rgba(27, 26, 46, 0.7) !important;
+  backdrop-filter: blur(25px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(199, 112, 240, 0.1) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .navbar {
@@ -257,7 +452,7 @@ button:focus {
 .home-section {
   position: relative;
   z-index: -1;
-  background-image: var(--image-gradient), url(./Assets/home-bg.jpg);
+  background-image: var(--section-background-color) !important;
   background-position: top center;
   background-repeat: no-repeat;
   padding-bottom: 30px !important;
@@ -740,4 +935,39 @@ button:focus {
 }
 .fork-btn-inner::after {
   display: none !important;
+}
+
+/* Custom button hover effects for projects */
+.project-button {
+  position: relative;
+}
+
+.project-button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: 0px 0 0 0 white;
+  transition: all 2s ease;
+}
+
+.project-button:hover::after {
+  box-shadow: 0px -13px 56px 12px #ffffffa6;
+}
+
+.project-button::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 100%;
+  background-color: black;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 1s ease;
+}
+
+.project-button:hover::before {
+  width: 100%;
 }

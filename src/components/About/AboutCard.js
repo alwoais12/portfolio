@@ -1,30 +1,28 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import { CgWebsite } from "react-icons/cg";
-import { CgPhone } from "react-icons/cg";
-import { CgMail } from "react-icons/cg";
 import { ImPointRight } from "react-icons/im";
 import ahmedImage from "../../Assets/ahmed.png";
 
 function AboutCard() {
   return (
-    <Card className="quote-card-view">
+    <Card className="quote-card-view glass-card hover-zone">
       <Card.Body>
         <div className="text-center mb-4">
-          <img 
-            src={ahmedImage} 
-            alt="Ahmed Alowais" 
-            className="profile-image"
-            style={{
-              width: "200px",
-              height: "200px",
-              borderRadius: "50%",
-              objectFit: "cover",
-              border: "4px solid #c084f5",
-              marginBottom: "20px"
-            }}
-          />
+          <div className="glass floating cursor-hover" style={{ display: "inline-block", padding: "10px", borderRadius: "50%" }}>
+            <img 
+              src={ahmedImage} 
+              alt="Ahmed Alowais" 
+              className="profile-image pulse-glow card-3d"
+              style={{
+                width: "200px",
+                height: "200px",
+                borderRadius: "50%",
+                objectFit: "cover",
+                border: "4px solid #c084f5",
+                marginBottom: "20px"
+              }}
+            />
+          </div>
         </div>
         <blockquote className="blockquote mb-0">
           <p style={{ textAlign: "justify" }}>

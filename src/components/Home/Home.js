@@ -7,14 +7,14 @@ import ahmedImage from "../../Assets/ahmed.png";
 function Home() {
   return (
     <section>
-      <Container fluid className="home-section" id="home">
+      <Container fluid className="home-section particle-bg" id="home">
         <Particle />
         <Container className="home-content">
           <Row>
             <Col md={7} className="home-header">
               <h1 className="heading-name">
                 I'M
-                <strong className="main-name"> AHMED</strong>
+                <strong className="main-name gradient-text"> AHMED</strong>
               </h1>
 
               <div style={{ padding: 50, textAlign: "left" }}>
@@ -23,19 +23,26 @@ function Home() {
             </Col>
 
             <Col md={5} className="home-image-container">
-              <img 
-                src={ahmedImage} 
-                alt="Ahmed Alowais" 
-                className="home-profile-image"
-                style={{
-                  width: "100%",
-                  maxWidth: "400px",
-                  height: "auto",
-                  borderRadius: "20px",
-                  boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
-                  border: "4px solid #c084f5"
-                }}
-              />
+                <div className="glass-card floating transform-3d cursor-hover" style={{
+                  width: "400px",
+                  height: "400px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  margin: "0 auto"
+                }}>
+                  <img 
+                    src={ahmedImage} 
+                    alt="Ahmed Alowais" 
+                    className="home-profile-image morphing-shape pulse-glow"
+                    style={{
+                      width: "350px",
+                      height: "350px",
+                      objectFit: "cover",
+                      borderRadius: "50%"
+                    }}
+                  />
+              </div>
             </Col>
           </Row>
         </Container>

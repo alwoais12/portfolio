@@ -1,0 +1,199 @@
+/* Custom Cursor Styles */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  margin-top: -16px;
+  margin-left: -16px;
+  border: 2px solid rgba(199, 112, 240, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  backdrop-filter: blur(10px);
+  background: radial-gradient(circle, rgba(199, 112, 240, 0.15) 0%, rgba(199, 112, 240, 0.05) 70%, transparent 100%);
+  will-change: transform;
+  transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              height 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              border-color 0.3s ease, 
+              background 0.3s ease,
+              box-shadow 0.3s ease,
+              margin 0.3s ease;
+  box-shadow: 
+    0 0 20px rgba(199, 112, 240, 0.3),
+    inset 0 0 10px rgba(199, 112, 240, 0.1);
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  margin-left: -3px;
+  background: linear-gradient(135deg, #c770f0 0%, #a855f7 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10001;
+  box-shadow: 
+    0 0 15px rgba(199, 112, 240, 1),
+    0 0 30px rgba(199, 112, 240, 0.5),
+    inset 0 0 5px rgba(255, 255, 255, 0.3);
+  will-change: transform;
+  transition: width 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              height 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              background 0.2s ease,
+              box-shadow 0.2s ease,
+              margin 0.2s ease;
+}
+
+.custom-cursor.hovering {
+  width: 48px;
+  height: 48px;
+  margin-top: -24px;
+  margin-left: -24px;
+  border-color: rgba(199, 112, 240, 1);
+  background: radial-gradient(circle, rgba(199, 112, 240, 0.25) 0%, rgba(199, 112, 240, 0.1) 70%, transparent 100%);
+  box-shadow: 
+    0 0 40px rgba(199, 112, 240, 0.6),
+    0 0 60px rgba(199, 112, 240, 0.3),
+    inset 0 0 15px rgba(199, 112, 240, 0.2);
+}
+
+.cursor-dot.hovering {
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  margin-left: -5px;
+  background: linear-gradient(135deg, #a855f7 0%, #c770f0 100%);
+  box-shadow: 
+    0 0 25px rgba(199, 112, 240, 1),
+    0 0 40px rgba(199, 112, 240, 0.7),
+    inset 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.custom-cursor.clicking {
+  width: 24px;
+  height: 24px;
+  margin-top: -12px;
+  margin-left: -12px;
+  border-color: rgba(199, 112, 240, 1);
+  background: radial-gradient(circle, rgba(199, 112, 240, 0.4) 0%, rgba(199, 112, 240, 0.2) 70%, transparent 100%);
+  box-shadow: 
+    0 0 30px rgba(199, 112, 240, 0.8),
+    inset 0 0 12px rgba(199, 112, 240, 0.3);
+}
+
+.cursor-dot.clicking {
+  width: 4px;
+  height: 4px;
+  margin-top: -2px;
+  margin-left: -2px;
+  background: linear-gradient(135deg, #c770f0 0%, #e879f9 100%);
+  box-shadow: 
+    0 0 20px rgba(199, 112, 240, 1),
+    0 0 35px rgba(199, 112, 240, 0.8);
+}
+
+/* Cursor Trail Effect */
+.custom-cursor::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(199, 112, 240, 0.1) 0%, transparent 70%);
+  transform: translate(-50%, -50%) scale(1.5);
+  opacity: 0.6;
+  animation: cursorPulse 2s ease-in-out infinite;
+}
+
+.cursor-dot::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(199, 112, 240, 0.3) 0%, transparent 60%);
+  transform: translate(-50%, -50%);
+  opacity: 0.4;
+  animation: dotRipple 1.5s ease-out infinite;
+}
+
+@keyframes cursorPulse {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0.3;
+  }
+}
+
+@keyframes dotRipple {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
+
+/* Magnetic Effect */
+.custom-cursor.hovering::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  border: 1px solid rgba(199, 112, 240, 0.4);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: magneticRing 1s ease-in-out infinite;
+}
+
+@keyframes magneticRing {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.3;
+  }
+}
+
+/* Hide default cursor on interactive elements */
+body {
+  cursor: none;
+}
+
+a, button, .cursor-hover, [role="button"] {
+  cursor: none;
+}
+
+/* Responsive - Hide custom cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor,
+  .cursor-dot {
+    display: none;
+  }
+  
+  body {
+    cursor: auto;
+  }
+  
+  a, button, .cursor-hover, [role="button"] {
+    cursor: pointer;
+  }
+}

@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import Preloader from "../src/components/Pre";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home/Home";
-import About from "./components/About/About";
-import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
-import Resume from "./components/Resume/ResumeNew";
+import BackToTop from "./components/BackToTop";
 import {
   BrowserRouter as Router,
   Route,
@@ -16,6 +13,12 @@ import ScrollToTop from "./components/ScrollToTop";
 import "./style.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+// Lazy-loaded routes for code-splitting
+const Home = lazy(() => import("./components/Home/Home"));
+const About = lazy(() => import("./components/About/About"));
+const Projects = lazy(() => import("./components/Projects/Projects"));
+const Resume = lazy(() => import("./components/Resume/ResumeNew"));
 
 function App() {
   const [load, upadateLoad] = useState(true);
@@ -35,15 +38,18 @@ function App() {
         <Navbar />
         <ScrollToTop />
         <div className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/project" element={<Projects />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/resume" element={<Resume />} />
-            <Route path="*" element={<Navigate to="/"/>} />
-          </Routes>
+          <Suspense fallback={<div />}> 
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/project" element={<Projects />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/resume" element={<Resume />} />
+              <Route path="*" element={<Navigate to="/"/>} />
+            </Routes>
+          </Suspense>
         </div>
         <Footer />
+        <BackToTop />
       </div>
     </Router>
   );

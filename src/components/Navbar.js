@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
@@ -6,7 +6,6 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { CgGitFork } from "react-icons/cg";
-import { ImBlog } from "react-icons/im";
 import {
   AiFillStar,
   AiOutlineHome,
@@ -28,7 +27,10 @@ function NavBar() {
     }
   }
 
-  window.addEventListener("scroll", scrollHandler);
+  useEffect(() => {
+    window.addEventListener("scroll", scrollHandler);
+    return () => window.removeEventListener("scroll", scrollHandler);
+  }, []);
 
   return (
     <Navbar
@@ -54,7 +56,7 @@ function NavBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto" defaultActiveKey="#home">
             <Nav.Item>
-              <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
+              <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)} className="cursor-hover hover-zone">
                 <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
               </Nav.Link>
             </Nav.Item>
@@ -64,6 +66,7 @@ function NavBar() {
                 as={Link}
                 to="/about"
                 onClick={() => updateExpanded(false)}
+                className="cursor-hover hover-zone"
               >
                 <AiOutlineUser style={{ marginBottom: "2px" }} /> About
               </Nav.Link>
@@ -74,6 +77,7 @@ function NavBar() {
                 as={Link}
                 to="/project"
                 onClick={() => updateExpanded(false)}
+                className="cursor-hover hover-zone"
               >
                 <AiOutlineFundProjectionScreen
                   style={{ marginBottom: "2px" }}
@@ -87,6 +91,7 @@ function NavBar() {
                 as={Link}
                 to="/resume"
                 onClick={() => updateExpanded(false)}
+                className="cursor-hover hover-zone"
               >
                 <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
               </Nav.Link>
@@ -98,7 +103,8 @@ function NavBar() {
               <Button
                 href="https://github.com/alwoais12/Portfolio"
                 target="_blank"
-                className="fork-btn-inner"
+                rel="noopener noreferrer"
+                className="fork-btn-inner glass cursor-hover hover-zone pulse-glow"
               >
                 <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
                 <AiFillStar style={{ fontSize: "1.1em" }} />
