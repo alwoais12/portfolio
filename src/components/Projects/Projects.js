@@ -1,236 +1,471 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { motion } from "framer-motion";
 import Particle from "../Particle";
-// Removed project logo import - using text instead
+import ScrollReveal from "../Effects/ScrollReveal";
 
 function Projects() {
-  const [showDetails, setShowDetails] = useState(false);
+  const [hoveredProject, setHoveredProject] = useState(null);
+
   return (
     <Container fluid className="project-section">
       <Particle />
       <Container>
-        <h1 className="project-heading">
-          My Recent <strong className="purple">Works </strong>
-        </h1>
-        <p style={{ color: "white" }}>
-          Here are some projects I've been working on recently.
-        </p>
+        <ScrollReveal direction="up">
+          <h1 className="project-heading">
+            My Recent <strong className="purple">Works </strong>
+          </h1>
+          <p style={{ color: "white" }}>
+            Here are some projects I've been working on recently.
+          </p>
+        </ScrollReveal>
         
-        {/* Future Step Project Section */}
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-          <Col md={12} className="text-center mb-5">
-            <div className="future-step-project-container glass-card hover-zone card-3d cursor-hover">
-              <div className="project-header">
-                <div style={{ marginBottom: "10px" }}>
-                  <small 
-                    style={{ 
-                      color: "rgba(192, 132, 245, 0.7)", 
-                      fontSize: "0.85em",
-                      fontStyle: "italic",
-                      opacity: 0.8
+        {/* Projects Container - Side by Side */}
+        <ScrollReveal direction="up" delay={0.2}>
+          <Row style={{ justifyContent: "center", paddingBottom: "40px", display: "flex", gap: "25px", maxWidth: "1400px", margin: "0 auto" }}>
+            
+            {/* Future Step Project */}
+            <Col 
+              md={hoveredProject === "future-step" ? 7 : hoveredProject ? 4 : 5} 
+              style={{ 
+                padding: "0",
+                transition: "all 0.5s ease-in-out"
+              }}
+            >
+              <motion.div
+                className="future-step-project-container glass-card hover-zone card-3d cursor-hover"
+                onMouseEnter={() => setHoveredProject("future-step")}
+                onMouseLeave={() => setHoveredProject(null)}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ 
+                  opacity: 1, 
+                  y: 0,
+                  scale: hoveredProject === "future-step" ? 1.02 : hoveredProject ? 0.95 : 1
+                }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                style={{
+                  height: hoveredProject ? "auto" : "600px",
+                  minHeight: "600px",
+                  display: "flex",
+                  flexDirection: "column",
+                  overflow: "hidden"
+                }}
+              >
+                <div className="project-header" style={{ 
+                  padding: "25px 20px 20px", 
+                  textAlign: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%"
+                }}>
+                  {/* Logo with circular background */}
+                  <div style={{ height: "170px", display: "flex", justifyContent: "center", alignItems: "center", marginBottom: "15px" }}>
+                    <div style={{
+                      width: hoveredProject === "future-step" ? "180px" : "160px",
+                      height: hoveredProject === "future-step" ? "180px" : "160px",
+                      borderRadius: "50%",
+                      background: "radial-gradient(circle, rgba(192, 132, 245, 0.25), rgba(168, 85, 247, 0.12))",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      transition: "all 0.3s ease",
+                      boxShadow: "0 0 35px rgba(192, 132, 245, 0.4), inset 0 0 25px rgba(192, 132, 245, 0.15)"
+                    }}>
+                      <img 
+                        src="/future.ico" 
+                        alt="Future Step Logo"
+                        style={{
+                          width: hoveredProject === "future-step" ? "150px" : "130px",
+                          height: "auto",
+                          transition: "width 0.3s ease",
+                          filter: "brightness(1.3) drop-shadow(0 0 18px rgba(192, 132, 245, 0.5))"
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Project Title */}
+                  <h1 
+                    className="project-logo-text"
+                    style={{
+                      fontSize: hoveredProject === "future-step" ? "2.5em" : "2.2em",
+                      fontWeight: "700",
+                      marginBottom: "10px",
+                      background: "linear-gradient(135deg, #c084f5, #a855f7)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                      transition: "font-size 0.3s ease",
+                      letterSpacing: "0.5px",
+                      minHeight: "60px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center"
                     }}
                   >
-                    🔧 Currently in development
-                  </small>
-                </div>
-                <h1 
-                  className="project-logo-text floating pulse-glow cursor-hover neon-text"
-                  style={{
-                    fontSize: "4em",
-                    fontWeight: "bold",
-                    marginBottom: "25px",
-                    background: "linear-gradient(135deg, #c084f5, #a855f7)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    textShadow: "0 0 30px rgba(192, 132, 245, 0.5)"
-                  }}
-                >
-                  Future Step
-                </h1>
+                    Future Step
+                  </h1>
 
-                <button
-                  type="button"
-                  onClick={() => setShowDetails(!showDetails)}
-                  className="project-button"
-                  style={{
-                    border: "none",
-                    position: "relative",
-                    width: "200px",
-                    height: "73px",
-                    padding: "0",
-                    zIndex: "2",
-                    WebkitMask: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='868' width='2500' viewBox='0 0 726 252.17'%3E%3Cpath d='M483.92 0S481.38 24.71 466 40.11c-11.74 11.74-24.09 12.66-40.26 15.07-9.42 1.41-29.7 3.77-34.81-.79-2.37-2.11-3-21-3.22-27.62-.21-6.92-1.36-16.52-2.82-18-.75 3.06-2.49 11.53-3.09 13.61S378.49 34.3 378 36a85.13 85.13 0 0 0-30.09 0c-.46-1.67-3.17-11.48-3.77-13.56s-2.34-10.55-3.09-13.61c-1.45 1.45-2.61 11.05-2.82 18-.21 6.67-.84 25.51-3.22 27.62-5.11 4.56-25.38 2.2-34.8.79-16.16-2.47-28.51-3.39-40.21-15.13C244.57 24.71 242 0 242 0H0s69.52 22.74 97.52 68.59c16.56 27.11 14.14 58.49 9.92 74.73C170 140 221.46 140 273 158.57c69.23 24.93 83.2 76.19 90 93.6 6.77-17.41 20.75-68.67 90-93.6 51.54-18.56 103-18.59 165.56-15.25-4.21-16.24-6.63-47.62 9.93-74.73C656.43 22.74 726 0 726 0z'/%3E%3C/svg%3E\") no-repeat 50% 50%",
-                    mask: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='868' width='2500' viewBox='0 0 726 252.17'%3E%3Cpath d='M483.92 0S481.38 24.71 466 40.11c-11.74 11.74-24.09 12.66-40.26 15.07-9.42 1.41-29.7 3.77-34.81-.79-2.37-2.11-3-21-3.22-27.62-.21-6.92-1.36-16.52-2.82-18-.75 3.06-2.49 11.53-3.09 13.61S378.49 34.3 378 36a85.13 85.13 0 0 0-30.09 0c-.46-1.67-3.17-11.48-3.77-13.56s-2.34-10.55-3.09-13.61c-1.45 1.45-2.61 11.05-2.82 18-.21 6.67-.84 25.51-3.22 27.62-5.11 4.56-25.38 2.2-34.8.79-16.16-2.47-28.51-3.39-40.21-15.13C244.57 24.71 242 0 242 0H0s69.52 22.74 97.52 68.59c16.56 27.11 14.14 58.49 9.92 74.73C170 140 221.46 140 273 158.57c69.23 24.93 83.2 76.19 90 93.6 6.77-17.41 20.75-68.67 90-93.6 51.54-18.56 103-18.59 165.56-15.25-4.21-16.24-6.63-47.62 9.93-74.73C656.43 22.74 726 0 726 0z'/%3E%3C/svg%3E\") no-repeat 50% 50%",
-                    WebkitMaskSize: "100%",
-                    cursor: "pointer",
-                    backgroundColor: "transparent",
-                    transform: "translateY(8px)"
-                  }}
-                >
-                  <span style={{
-                    position: "absolute",
-                    width: "100%",
-                    fontSize: "12px",
-                    fontWeight: "100",
-                    left: "50%",
-                    top: "39%",
-                    letterSpacing: "2px",
-                    textAlign: "center",
-                    transform: "translate(-50%,-50%)",
-                    color: "#c084f5",
-                    transition: "all 2s ease"
+                  {/* Subtitle */}
+                  <h3 style={{ 
+                    color: "rgba(155, 126, 172, 0.9)", 
+                    marginBottom: "12px",
+                    fontSize: hoveredProject === "future-step" ? "1.1em" : "1em",
+                    fontWeight: "400",
+                    transition: "font-size 0.3s ease",
+                    lineHeight: "1.35",
+                    minHeight: "45px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
                   }}>
-                    {showDetails ? "Hide information" : "View information"}
-                  </span>
-                </button>
+                    University Internship Management System
+                  </h3>
 
-                {showDetails && (
-                  <>
-                    <h3 className="project-subtitle" style={{ color: "rgb(155 126 172)", marginBottom: "25px", fontSize: "1.4em", fontWeight: "400" }}>
-                      University Internship Management System
-                    </h3>
-                    <p className="project-description" style={{ color: "rgb(155 126 172)", fontSize: "1.2em", maxWidth: "800px", margin: "0 auto 30px", lineHeight: "1.6" }}>
-                      A platform that connects students with internship opportunities and enables achievement tracking, 
-                      designed for universities and organizations across the UAE.
-                    </p>
-                  </>
+                  {/* Description */}
+                  <p style={{ 
+                    color: "rgba(155, 126, 172, 0.85)", 
+                    fontSize: hoveredProject === "future-step" ? "0.95em" : "0.88em",
+                    maxWidth: "90%", 
+                    margin: "0 auto 15px", 
+                    lineHeight: "1.55",
+                    transition: "font-size 0.3s ease",
+                    minHeight: "90px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}>
+                    A platform that connects students with internship opportunities and enables achievement tracking, 
+                    designed for universities and organizations across the UAE.
+                  </p>
+
+                  {/* CTA Button */}
+                  <div style={{ marginTop: "auto", display: "flex", alignItems: "flex-end", justifyContent: "center", minHeight: "65px", paddingTop: "10px", paddingBottom: "5px" }}>
+                    <a 
+                      href="https://www.fahr.gov.ae/futurestep/en" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-block",
+                        padding: "12px 32px",
+                        background: "linear-gradient(135deg, #c084f5, #a855f7)",
+                        color: "white",
+                        borderRadius: "30px",
+                        textDecoration: "none",
+                        fontSize: "0.95em",
+                        fontWeight: "600",
+                        transition: "all 0.3s ease",
+                        boxShadow: "0 4px 15px rgba(192, 132, 245, 0.4)",
+                        border: "none",
+                        letterSpacing: "0.3px"
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.transform = "translateY(-2px)";
+                        e.target.style.boxShadow = "0 6px 20px rgba(192, 132, 245, 0.5)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.transform = "translateY(0)";
+                        e.target.style.boxShadow = "0 4px 15px rgba(192, 132, 245, 0.4)";
+                      }}
+                    >
+                      🚀 View Live Platform
+                    </a>
+                  </div>
+                </div>
+
+                {/* Features Section - Shows when expanded */}
+                {hoveredProject === "future-step" && (
+                  <motion.div 
+                    className="project-features" 
+                    style={{ marginBottom: "30px" }}
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <h4 style={{ color: "#c084f5", marginBottom: "20px", fontSize: "1.4em" }}>
+                      ✨ Key Features
+                    </h4>
+                    <Row>
+                      <Col md={6}>
+                        <div className="feature-card glass-card hover-zone cursor-hover" style={{ marginBottom: "15px" }}>
+                          <div className="feature-icon">🔐</div>
+                          <h5 style={{ color: "#c084f5", marginBottom: "8px", fontSize: "1em" }}>Multi-Role Auth</h5>
+                          <p style={{ color: "rgb(155 126 172)", fontSize: "0.85em" }}>Students, entities & universities</p>
+                        </div>
+                      </Col>
+                      <Col md={6}>
+                        <div className="feature-card glass-card hover-zone cursor-hover" style={{ marginBottom: "15px" }}>
+                          <div className="feature-icon">💼</div>
+                          <h5 style={{ color: "#c084f5", marginBottom: "8px", fontSize: "1em" }}>Internship Management</h5>
+                          <p style={{ color: "rgb(155 126 172)", fontSize: "0.85em" }}>Posting & application handling</p>
+                        </div>
+                      </Col>
+                      <Col md={6}>
+                        <div className="feature-card glass-card hover-zone cursor-hover" style={{ marginBottom: "15px" }}>
+                          <div className="feature-icon">🏆</div>
+                          <h5 style={{ color: "#c084f5", marginBottom: "8px", fontSize: "1em" }}>Achievement Tracking</h5>
+                          <p style={{ color: "rgb(155 126 172)", fontSize: "0.85em" }}>Student progress monitoring</p>
+                        </div>
+                      </Col>
+                      <Col md={6}>
+                        <div className="feature-card glass-card hover-zone cursor-hover" style={{ marginBottom: "15px" }}>
+                          <div className="feature-icon">📊</div>
+                          <h5 style={{ color: "#c084f5", marginBottom: "8px", fontSize: "1em" }}>Dashboard Interface</h5>
+                          <p style={{ color: "rgb(155 126 172)", fontSize: "0.85em" }}>Responsive & intuitive</p>
+                        </div>
+                      </Col>
+                    </Row>
+
+                    <h4 style={{ color: "#c084f5", marginTop: "25px", marginBottom: "20px", fontSize: "1.4em" }}>
+                      🛠️ Technologies
+                    </h4>
+                    <Row>
+                      {[
+                        { icon: "⚛️", name: "Next.js 15", desc: "App Router" },
+                        { icon: "📘", name: "TypeScript", desc: "Type Safety" },
+                        { icon: "🗄️", name: "SQL Server", desc: "Database" },
+                        { icon: "🔌", name: "Prisma", desc: "ORM" },
+                        { icon: "🔐", name: "NextAuth.js", desc: "Authentication" },
+                        { icon: "🎨", name: "Tailwind CSS", desc: "Styling" }
+                      ].map((tech, idx) => (
+                        <Col md={4} key={idx}>
+                          <div className="tech-card glass-card hover-zone cursor-hover" style={{ marginBottom: "10px" }}>
+                            <div className="tech-icon floating">{tech.icon}</div>
+                            <h6 style={{ color: "#c084f5", marginBottom: "3px", fontSize: "0.9em" }}>{tech.name}</h6>
+                            <p style={{ color: "rgb(155 126 172)", fontSize: "0.75em" }}>{tech.desc}</p>
+                          </div>
+                        </Col>
+                      ))}
+                    </Row>
+                  </motion.div>
                 )}
-              </div>
+              </motion.div>
+            </Col>
 
-              {/* Features Section */}
-              {showDetails && (
-                <div className="project-features" style={{ marginBottom: "40px" }}>
-                  <h4 style={{ color: "#c084f5", marginBottom: "25px", fontSize: "1.6em" }}>
-                    ✨ Key Features
-                  </h4>
-                  <Row>
-                    <Col md={3}>
-                      <div className="feature-card glass-card hover-zone card-3d cursor-hover">
-                        <div className="feature-icon">🔐</div>
-                        <h5 style={{ color: "#c084f5", marginBottom: "10px" }}>Multi-Role Auth</h5>
-                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.9em" }}>Students, entities & universities</p>
-                      </div>
-                    </Col>
-                    <Col md={3}>
-                      <div className="feature-card glass-card hover-zone card-3d cursor-hover">
-                        <div className="feature-icon">💼</div>
-                        <h5 style={{ color: "#c084f5", marginBottom: "10px" }}>Internship Management</h5>
-                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.9em" }}>Posting & application handling</p>
-                      </div>
-                    </Col>
-                    <Col md={3}>
-                      <div className="feature-card glass-card hover-zone card-3d cursor-hover">
-                        <div className="feature-icon">🏆</div>
-                        <h5 style={{ color: "#c084f5", marginBottom: "10px" }}>Achievement Tracking</h5>
-                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.9em" }}>Student progress monitoring</p>
-                      </div>
-                    </Col>
-                    <Col md={3}>
-                      <div className="feature-card glass-card hover-zone card-3d cursor-hover">
-                        <div className="feature-icon">📊</div>
-                        <h5 style={{ color: "#c084f5", marginBottom: "10px" }}>Dashboard Interface</h5>
-                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.9em" }}>Responsive & intuitive</p>
-                      </div>
-                    </Col>
-                  </Row>
+            {/* 3D Simulator Report Project */}
+            <Col 
+              md={hoveredProject === "simulator" ? 7 : hoveredProject ? 4 : 5} 
+              style={{ 
+                padding: "0",
+                transition: "all 0.5s ease-in-out"
+              }}
+            >
+              <motion.div
+                className="simulator-project-container glass-card hover-zone card-3d cursor-hover"
+                onMouseEnter={() => setHoveredProject("simulator")}
+                onMouseLeave={() => setHoveredProject(null)}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ 
+                  opacity: 1, 
+                  y: 0,
+                  scale: hoveredProject === "simulator" ? 1.02 : hoveredProject ? 0.95 : 1
+                }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                style={{
+                  height: hoveredProject ? "auto" : "600px",
+                  minHeight: "600px",
+                  display: "flex",
+                  flexDirection: "column",
+                  overflow: "hidden"
+                }}
+              >
+                <div className="project-header" style={{ 
+                  padding: "25px 20px 20px", 
+                  textAlign: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                  height: "100%"
+                }}>
+                  {/* Avatar with circular background */}
+                  <div style={{ height: "170px", display: "flex", justifyContent: "center", alignItems: "center", marginBottom: "15px" }}>
+                    <div style={{
+                      width: hoveredProject === "simulator" ? "180px" : "160px",
+                      height: hoveredProject === "simulator" ? "180px" : "160px",
+                      borderRadius: "50%",
+                      background: "radial-gradient(circle, rgba(79, 195, 247, 0.25), rgba(41, 182, 246, 0.12))",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      transition: "all 0.3s ease",
+                      boxShadow: "0 0 35px rgba(79, 195, 247, 0.4), inset 0 0 25px rgba(79, 195, 247, 0.15)"
+                    }}>
+                      <img 
+                        src="/avater.png" 
+                        alt="3D Simulator Avatar"
+                        style={{
+                          width: hoveredProject === "simulator" ? "150px" : "130px",
+                          height: "auto",
+                          transition: "width 0.3s ease",
+                          filter: "drop-shadow(0 0 18px rgba(79, 195, 247, 0.5))",
+                          borderRadius: "50%"
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Project Title */}
+                  <h1 
+                    className="project-logo-text"
+                    style={{
+                      fontSize: hoveredProject === "simulator" ? "2.5em" : "2.2em",
+                      fontWeight: "700",
+                      marginBottom: "10px",
+                      background: "linear-gradient(135deg, #4fc3f7, #29b6f6)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                      transition: "font-size 0.3s ease",
+                      letterSpacing: "0.5px",
+                      minHeight: "60px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center"
+                    }}
+                  >
+                    3D Simulator Report
+                  </h1>
+
+                  {/* Subtitle */}
+                  <h3 style={{ 
+                    color: "rgba(155, 126, 172, 0.9)", 
+                    marginBottom: "12px",
+                    fontSize: hoveredProject === "simulator" ? "1.1em" : "1em",
+                    fontWeight: "400",
+                    transition: "font-size 0.3s ease",
+                    lineHeight: "1.35",
+                    minHeight: "45px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}>
+                    Interactive HR AI Agent Analytics Dashboard
+                  </h3>
+
+                  {/* Description */}
+                  <p style={{ 
+                    color: "rgba(155, 126, 172, 0.85)", 
+                    fontSize: hoveredProject === "simulator" ? "0.95em" : "0.88em",
+                    maxWidth: "90%", 
+                    margin: "0 auto 15px", 
+                    lineHeight: "1.55",
+                    transition: "font-size 0.3s ease",
+                    minHeight: "90px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}>
+                    An immersive 3D visualization dashboard for HR analytics powered by AI agents, 
+                    featuring real-time data insights and interactive reporting capabilities.
+                  </p>
+
+                  {/* CTA Button */}
+                  <div style={{ marginTop: "auto", display: "flex", alignItems: "flex-end", justifyContent: "center", minHeight: "65px", paddingTop: "10px", paddingBottom: "5px" }}>
+                    <a 
+                      href="https://hr-ai-agent-report.vercel.app/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-block",
+                        padding: "12px 32px",
+                        background: "linear-gradient(135deg, #4fc3f7, #29b6f6)",
+                        color: "white",
+                        borderRadius: "30px",
+                        textDecoration: "none",
+                        fontSize: "0.95em",
+                        fontWeight: "600",
+                        transition: "all 0.3s ease",
+                        boxShadow: "0 4px 15px rgba(79, 195, 247, 0.4)",
+                        border: "none",
+                        letterSpacing: "0.3px"
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.transform = "translateY(-2px)";
+                        e.target.style.boxShadow = "0 6px 20px rgba(79, 195, 247, 0.5)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.transform = "translateY(0)";
+                        e.target.style.boxShadow = "0 4px 15px rgba(79, 195, 247, 0.4)";
+                      }}
+                    >
+                      🚀 View Live Demo
+                    </a>
+                  </div>
                 </div>
-              )}
 
-              {/* Technologies Section */}
-              {showDetails && (
-                <div className="project-technologies" style={{ marginBottom: "40px" }}>
-                  <h4 style={{ color: "#c084f5", marginBottom: "25px", fontSize: "1.6em" }}>
-                    🛠️ Technologies
-                  </h4>
-                  <Row>
-                    <Col md={2}>
-                      <div className="tech-card glass-card hover-zone cursor-hover">
-                        <div className="tech-icon floating">⚛️</div>
-                        <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>Next.js 15</h6>
-                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>App Router</p>
-                      </div>
-                    </Col>
-                    <Col md={2}>
-                      <div className="tech-card glass-card hover-zone cursor-hover">
-                        <div className="tech-icon floating">📘</div>
-                        <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>TypeScript</h6>
-                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>Type Safety</p>
-                      </div>
-                    </Col>
-                    <Col md={2}>
-                      <div className="tech-card glass-card hover-zone cursor-hover">
-                        <div className="tech-icon floating">🗄️</div>
-                        <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>SQL Server</h6>
-                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>Database</p>
-                      </div>
-                    </Col>
-                    <Col md={2}>
-                      <div className="tech-card glass-card hover-zone cursor-hover">
-                        <div className="tech-icon floating">🔌</div>
-                        <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>Prisma</h6>
-                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>ORM</p>
-                      </div>
-                    </Col>
-                    <Col md={2}>
-                      <div className="tech-card glass-card hover-zone cursor-hover">
-                        <div className="tech-icon floating">🔐</div>
-                        <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>NextAuth.js</h6>
-                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>Authentication</p>
-                      </div>
-                    </Col>
-                    <Col md={2}>
-                      <div className="tech-card glass-card hover-zone cursor-hover">
-                        <div className="tech-icon floating">🎨</div>
-                        <h6 style={{ color: "#c084f5", marginBottom: "5px" }}>Tailwind CSS</h6>
-                        <p style={{ color: "rgb(155 126 172)", fontSize: "0.8em" }}>Styling</p>
-                      </div>
-                    </Col>
-                  </Row>
-                </div>
-              )}
+                {/* Key Highlights - Shows when expanded */}
+                {hoveredProject === "simulator" && (
+                  <motion.div 
+                    className="project-highlights" 
+                    style={{ marginTop: "30px" }}
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <h4 style={{ color: "#4fc3f7", marginBottom: "20px", fontSize: "1.4em" }}>
+                      ✨ Key Highlights
+                    </h4>
+                    <Row>
+                      {[
+                        { icon: "🎯", title: "3D Visualizations", desc: "Immersive data representation" },
+                        { icon: "🤖", title: "AI-Powered", desc: "Intelligent analytics" },
+                        { icon: "📊", title: "Real-time Data", desc: "Live updates & insights" },
+                        { icon: "✨", title: "Interactive UI", desc: "Engaging user experience" }
+                      ].map((highlight, idx) => (
+                        <Col md={6} key={idx}>
+                          <div className="highlight-card glass-card hover-zone cursor-hover" style={{ marginBottom: "15px" }}>
+                            <div className="highlight-icon" style={{ fontSize: "2em", marginBottom: "8px" }}>{highlight.icon}</div>
+                            <h5 style={{ color: "#4fc3f7", marginBottom: "5px", fontSize: "1em" }}>{highlight.title}</h5>
+                            <p style={{ color: "rgb(155 126 172)", fontSize: "0.85em" }}>{highlight.desc}</p>
+                          </div>
+                        </Col>
+                      ))}
+                    </Row>
+                  </motion.div>
+                )}
+              </motion.div>
+            </Col>
 
-              {/* Status Badge moved above; only visible when details hidden */}
-            </div>
-          </Col>
-        </Row>
+          </Row>
+        </ScrollReveal>
 
         {/* Other Projects Coming Soon */}
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-          <Col md={12} className="text-center mb-5">
-            <div className="coming-soon-container">
-              <h2 className="coming-soon-title" style={{ color: "#c084f5", marginBottom: "15px" }}>
-                🌟 More Projects Coming Soon
-              </h2>
-              <p className="coming-soon-description" style={{ color: "rgb(155 126 172)", fontSize: "1.1em", maxWidth: "600px", margin: "0 auto" }}>
-                I'm working on several other exciting projects that I can't wait to share with you! 
-                Stay tuned for updates on my latest work in web development, mobile apps, and innovative solutions.
-              </p>
-              <div className="coming-soon-features" style={{ marginTop: "30px" }}>
-                <Row>
-                  <Col md={4}>
-                    <div className="feature-item">
-                      <h4 style={{ color: "#c084f5" }}>🌐 Web Applications</h4>
-                      <p style={{ color: "rgb(155 126 172)" }}>Modern React & Node.js projects</p>
-                    </div>
-                  </Col>
-                  <Col md={4}>
-                    <div className="feature-item">
-                      <h4 style={{ color: "#c084f5" }}>📱 Mobile Apps</h4>
-                      <p style={{ color: "rgb(155 126 172)" }}>Cross-platform solutions</p>
-                    </div>
-                  </Col>
-                  <Col md={4}>
-                    <div className="feature-item">
-                      <h4 style={{ color: "#c084f5" }}>🔧 APIs & Services</h4>
-                      <p style={{ color: "rgb(155 126 172)" }}>Backend infrastructure</p>
-                    </div>
-                  </Col>
-                </Row>
+        <ScrollReveal direction="up" delay={0.4}>
+          <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+            <Col md={12} className="text-center mb-5">
+              <div className="coming-soon-container">
+                <h2 className="coming-soon-title" style={{ color: "#c084f5", marginBottom: "15px" }}>
+                  🌟 More Projects Coming Soon
+                </h2>
+                <p className="coming-soon-description" style={{ color: "rgb(155 126 172)", fontSize: "1.1em", maxWidth: "600px", margin: "0 auto" }}>
+                  I'm working on several other exciting projects that I can't wait to share with you! 
+                  Stay tuned for updates on my latest work in web development, mobile apps, and innovative solutions.
+                </p>
+                <div className="coming-soon-features" style={{ marginTop: "30px" }}>
+                  <Row>
+                    <Col md={4}>
+                      <div className="feature-item">
+                        <h4 style={{ color: "#c084f5" }}>🌐 Web Applications</h4>
+                        <p style={{ color: "rgb(155 126 172)" }}>Modern React & Node.js projects</p>
+                      </div>
+                    </Col>
+                    <Col md={4}>
+                      <div className="feature-item">
+                        <h4 style={{ color: "#c084f5" }}>📱 Mobile Apps</h4>
+                        <p style={{ color: "rgb(155 126 172)" }}>Cross-platform solutions</p>
+                      </div>
+                    </Col>
+                    <Col md={4}>
+                      <div className="feature-item">
+                        <h4 style={{ color: "#c084f5" }}>🔧 APIs & Services</h4>
+                        <p style={{ color: "rgb(155 126 172)" }}>Backend infrastructure</p>
+                      </div>
+                    </Col>
+                  </Row>
+                </div>
               </div>
-            </div>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        </ScrollReveal>
 
       </Container>
     </Container>
