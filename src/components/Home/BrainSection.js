@@ -17,10 +17,10 @@ function BrainSection() {
         <Row>
           <Col md={12} className="text-center">
             <h1 style={{ fontSize: "2.6em", marginBottom: "30px", color: "white" }}>
-              DIGITAL <strong className="purple">SIMULATION</strong>
+              THIS IS MY <strong className="purple">BRAIN!</strong>
             </h1>
-            <p style={{ color: "white", marginBottom: "40px" }}>
-              Interact with the 3D neural interface.
+            <p style={{ color: "white", marginBottom: "40px", fontSize: "0.9em", fontStyle: "italic" }}>
+              *whisper* slowly, don't give me brain damage..
             </p>
           </Col>
         </Row>
