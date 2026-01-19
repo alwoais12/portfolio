@@ -238,6 +238,12 @@ function DimensionalRift() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const isMobile = useIsMobile();
   
+  // Use ref to access scrollProgress in throttled handler without recreating it
+  const scrollProgressRef = useRef(scrollProgress);
+  useEffect(() => {
+    scrollProgressRef.current = scrollProgress;
+  }, [scrollProgress]);
+  
   // Scale particle counts based on device capability
   const foregroundParticleCount = isMobile ? 20 : 40;
 
@@ -267,6 +273,7 @@ function DimensionalRift() {
   }, []);
 
   // Throttled mouse position update for performance (16ms = ~60fps)
+  // Uses ref for scrollProgress to avoid recreating throttle on every scroll change
   const handleMouseMove = useMemo(() => 
     throttle((e) => {
       if (!containerRef.current) return;
@@ -282,10 +289,11 @@ function DimensionalRift() {
       const proximityIntensity = Math.max(0, 1 - distToCenter * 0.5);
       
       // Combine scroll and proximity for total intensity (1 to 1.5 range)
-      const totalIntensity = 1 + (proximityIntensity * 0.3) + (scrollProgress * 0.2);
+      // Read from ref to get current scrollProgress without dependency
+      const totalIntensity = 1 + (proximityIntensity * 0.3) + (scrollProgressRef.current * 0.2);
       setRiftIntensity(totalIntensity);
     }, 16),
-  [scrollProgress]);
+  []); // Empty deps - throttle function is created once and persists
 
   // Handle click for ripple effect
   const handleClick = useCallback((e) => {
