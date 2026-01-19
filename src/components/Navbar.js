@@ -10,7 +10,7 @@ import {
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
 } from "react-icons/ai";
-
+import { RiSpaceShipFill } from "react-icons/ri";
 import { CgFileDocument } from "react-icons/cg";
 
 function NavBar() {
@@ -95,7 +95,20 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
 
-
+            <Nav.Item>
+              <Nav.Link
+                as={Link}
+                to="/dimension"
+                onClick={() => updateExpanded(false)}
+                className="cursor-hover hover-zone"
+                style={{ 
+                  color: '#c770f0',
+                  textShadow: '0 0 10px rgba(199, 112, 240, 0.5)'
+                }}
+              >
+                <RiSpaceShipFill style={{ marginBottom: "2px" }} /> Dimension
+              </Nav.Link>
+            </Nav.Item>
 
           </Nav>
         </Navbar.Collapse>

@@ -1,0 +1,241 @@
+/* Dimensional Rift - Main Styles */
+
+.dimensional-rift-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2e 50%, #0f0f1a 100%);
+}
+
+.rift-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The rift tear mask */
+.rift-mask {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 600px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Canvas container for 3D scene */
+.cosmic-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Glowing edge effect */
+.rift-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 650px;
+  height: 750px;
+  pointer-events: none;
+  z-index: 3;
+  filter: blur(20px);
+  opacity: 0.8;
+  animation: riftPulse 3s ease-in-out infinite;
+}
+
+@keyframes riftPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.02);
+  }
+}
+
+/* Electric sparks */
+.spark {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #00ffff;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 30px #c770f0;
+  animation: sparkle 0.5s ease-out infinite;
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+/* Section title */
+.rift-title {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  text-align: center;
+}
+
+.rift-title h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  text-shadow: 
+    0 0 20px rgba(199, 112, 240, 0.8),
+    0 0 40px rgba(199, 112, 240, 0.5),
+    0 0 60px rgba(199, 112, 240, 0.3);
+}
+
+.rift-title .purple {
+  color: #c770f0;
+}
+
+.rift-subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+
+/* Instruction text */
+.rift-instruction {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  animation: fadeInOut 3s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Particle container */
+.edge-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Loading state */
+.rift-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #c770f0;
+  font-size: 1.5rem;
+  z-index: 20;
+  text-align: center;
+}
+
+.rift-loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(199, 112, 240, 0.2);
+  border-top-color: #c770f0;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Vignette overlay */
+.rift-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(0, 0, 0, 0.4) 70%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .rift-mask {
+    width: 320px;
+    height: 400px;
+  }
+  
+  .rift-glow {
+    width: 360px;
+    height: 440px;
+  }
+  
+  .rift-title h1 {
+    font-size: 1.8rem;
+    letter-spacing: 4px;
+  }
+  
+  .rift-subtitle {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .rift-mask {
+    width: 260px;
+    height: 320px;
+  }
+  
+  .rift-glow {
+    width: 300px;
+    height: 360px;
+  }
+  
+  .rift-title h1 {
+    font-size: 1.4rem;
+  }
+}
